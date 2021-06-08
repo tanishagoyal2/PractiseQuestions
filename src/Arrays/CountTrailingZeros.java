@@ -63,7 +63,7 @@ public class CountTrailingZeros{
          }
          System.out.println(count);
      }
-
+// adding commensts to increase the flow
     public static void main(String args[]){
         Scanner sc=new Scanner(System.in);
         int n=sc.nextInt();
