@@ -96,7 +96,7 @@ public class ArrayQuestions {
 			for(int j=i+1;j<=n-i-1;j++){
 				System.out.print(arr[j][n-i-1]+" ");
 			}
-			for(int j=n-2-i;j>=i-1;j--){
+			for(int j=n-2-i;j>=i;j--){
 				System.out.print(arr[n-i-1][j]+" ");
 			}
 			for(int j=n-2-i;j>=i+1;j--){
@@ -148,9 +148,31 @@ public class ArrayQuestions {
         
 		System.out.println(m-l);
     }
-	
+	public static int find(int arr[],int i,int j,int ele){
+		int mid=(i+j)/2;
+		System.out.println(mid);
+		if(mid<i || mid >j-1){
+			return -1;
+		}
+		if(ele==arr[mid])
+		return mid;
+		else{
+			int left=find(arr,i,mid-1,ele);
+			if(left!=-1){
+				return left;
+			}
+			else{
+				System.out.println("left returened null");
+				int right=find(arr,mid+1,j,ele);
+				if(right!=-1){
+					return right;
+				}
+			}
+		}
+		return -1;
+	}
 	public static void main(String args[]) {
-		int arr[]= {8,0,9,2,4,5,5,1};
-		TrappingWater(arr,8);
+		int arr[]={4,5,1,2,3};
+		System.out.println(find(arr,0,4,2));
 	}
 }
