@@ -87,6 +87,23 @@ public class ArrayQuestions {
 		}
 		System.out.println(water);
 	}
+	public static void spiral(int arr[][],int n){
+
+		for(int i=0;i<n/2;i++){
+			for(int j=i;j<=n-i-1;j++){
+				System.out.print(arr[i][j]+" ");
+			}
+			for(int j=i+1;j<=n-i-1;j++){
+				System.out.print(arr[j][n-i-1]+" ");
+			}
+			for(int j=n-2-i;j>=i-1;j--){
+				System.out.print(arr[n-i-1][j]+" ");
+			}
+			for(int j=n-2-i;j>=i+1;j--){
+				System.out.print(arr[j][i]+" ");
+			}
+		}
+	}
 	
 	public static void BuyAndSell(int arr[],int n) {
 		int buy=0;
