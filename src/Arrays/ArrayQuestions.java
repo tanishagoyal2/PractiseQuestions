@@ -128,6 +128,24 @@ public class ArrayQuestions {
         }
     }
 	
+	public static void paintFence(int arr[][],int n){
+		int red[]=new int[n];
+		int blue[]=new int[n];
+		int green []=new int[n];
+		red[0]=arr[0][0];
+		blue[0]=arr[0][1];
+		green[0]=arr[0][2];
+		for(int i=1;i<n;i++){
+			red[i]=Math.min(blue[i-1],green[i-1])+arr[i][0];
+			blue[i]=Math.min(red[i-1],green[i-1])+arr[i][1];
+			green[i]=Math.min(red[i-1],blue[i-1])+arr[i][2];
+		}
+		System.out.println(Math.min(red[n-1],Math.min(blue[n-1],green[n-1])));
+
+	}
+
+
+
 	public static void maxIndexDiff(int arr[], int n) { 
         
         // Your code here
@@ -172,7 +190,7 @@ public class ArrayQuestions {
 		return -1;
 	}
 	public static void main(String args[]) {
-		int arr[]={4,5,1,2,3};
-		System.out.println(find(arr,0,4,2));
+		int arr[][]={{100,5,10},{5,8,4},{3,2,9},{1,2,4}};
+		paintFence(arr,4);
 	}
 }
