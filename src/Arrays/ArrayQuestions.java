@@ -223,8 +223,45 @@ public class ArrayQuestions {
 		System.out.println(dp[n]);
 	}
 	
+
+	// buy and sell question with only one transaction;
+	public static void butAndSell(int n,int arr[]){
+		int dp[]=new int[n];
+		int min=Integer.MAX_VALUE;
+		int maxProfit=Integer.MIN_VALUE;
+		for(int i=0;i<n;i++){
+			if(min>arr[i]){
+				min=arr[i];
+			}
+			dp[i]=arr[i]-min;
+			if(maxProfit<dp[i]){
+				maxProfit=dp[i];
+			}
+		}
+		System.out.println(maxProfit);
+	}
+
+
+	// buy and sell question with infinite no of transaction
+	public static void butAndSell1(int n,int arr[]){
+		int profit=0;
+		int buy=0;
+		int sell=0;
+		for(int i=1;i<n;i++){
+			if(arr[i-1]<arr[i]){
+				sell++;
+			}
+			else{
+				profit+=arr[sell]-arr[buy];
+				buy=sell=i;
+			}
+			System.out.println("bus is "+buy+"sell is "+sell);
+		}
+		profit+=arr[sell]-arr[buy];
+		System.out.println(profit);
+	}
 	public static void main(String args[]) {
-		int arr[][]={{100,5,10},{5,8,4},{3,2,9},{1,2,4}};
-		TilingGeneral(3,8);
+		int arr[]={11,6,7,19,4,1,6,20,100};
+		butAndSell1(9, arr);
 	}
 }
