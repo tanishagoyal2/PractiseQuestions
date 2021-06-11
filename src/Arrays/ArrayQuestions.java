@@ -166,6 +166,7 @@ public class ArrayQuestions {
         
 		System.out.println(m-l);
     }
+	
 	public static int find(int arr[],int i,int j,int ele){
 		int mid=(i+j)/2;
 		System.out.println(mid);
@@ -189,8 +190,41 @@ public class ArrayQuestions {
 		}
 		return -1;
 	}
+	
+	
+	//if we have given tile size as 2x1 and floor size 2xn
+	public static void Tiling(int n){
+		int dp[]=new int[n+1];
+		dp[0]=1;
+		dp[1]=1;
+		for(int i=2;i<=n;i++){
+			dp[i]=dp[i-1]+dp[i-2];
+		}
+		System.out.println(dp[n]);
+
+	}
+
+	//if we are given tile size mx1 and floor size mxn
+	public static void TilingGeneral(int m,int n){
+		int dp[]=new int[n+1];
+		dp[0]=1;
+		dp[1]=1;
+		for(int i=2;i<=n;i++){
+			if(i<m){
+				dp[i]=1;
+			}
+			else if(i==m){
+				dp[i]=2;
+			}
+			else{
+				dp[i]=dp[i-1]+dp[i-m];
+			}
+		}
+		System.out.println(dp[n]);
+	}
+	
 	public static void main(String args[]) {
 		int arr[][]={{100,5,10},{5,8,4},{3,2,9},{1,2,4}};
-		paintFence(arr,4);
+		TilingGeneral(3,8);
 	}
 }
