@@ -260,8 +260,52 @@ public class ArrayQuestions {
 		profit+=arr[sell]-arr[buy];
 		System.out.println(profit);
 	}
+
+
+	// piyush and magical bean question;
+	public static void magicalBean(int n,int m,int k,int s,char arr[][]){
+		int str=s;
+		for(int i=0;i<n;i++){
+			System.out.println();
+			for(int j=0;j<m;j++){
+				System.out.print(arr[i][j]);
+				if(arr[i][j]=='.'){
+					str-=2;
+				}
+				else if(arr[i][j]=='*'){
+					str+=5;
+				}
+				else{
+					break;
+				}	
+				if(j+1!=m){
+					str-=1;
+				}
+			}
+		}
+		if(str>k){
+			System.out.println("YES");
+			System.out.println(str);
+		}
+		else{
+			System.out.println("NO");
+		}
+	}
 	public static void main(String args[]) {
-		int arr[]={11,6,7,19,4,1,6,20,100};
-		butAndSell1(9, arr);
+		String str="input is good";
+
+		Scanner sc=new Scanner(System.in);
+		String input[]=sc.nextLine().split(" ");
+		int n=Integer.parseInt(input[0]);
+		int m=Integer.parseInt(input[1]);
+		int k=Integer.parseInt(input[2]);
+		int s=Integer.parseInt(input[3]);
+		char arr[][]=new char [n][m];
+		for(int i=0;i<n;i++){
+			for(int j=0;j<m;j++){
+				arr[i][j]=sc.next().charAt(0);
+			}
+		}
+		magicalBean(n,m,k,s,arr);
 	}
 }
