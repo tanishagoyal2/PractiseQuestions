@@ -1,7 +1,5 @@
 package graphs;
 
-import graphs.detectCycleUsingUnion.Edge;
-
 public class DetectCycleUsingPathCompression {
 	int V,E;
 	Edge edge[];

@@ -139,6 +139,7 @@ public class bstQuestion {
 	}
 
     public static void main(String args[]){
+
        int n=7;
        int array[]={6,-13,14,-8,15,13,7};
        int lower=-10;
@@ -160,11 +161,11 @@ public class bstQuestion {
     
 }
 
-class Node{
+class Nodee{
     int data;
-    Node left;
-    Node right;
-    Node(int d){
+    Nodee left;
+    Nodee right;
+    Nodee(int d){
         this.data=d;
     }
 }
