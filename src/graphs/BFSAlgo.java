@@ -3,6 +3,7 @@ package graphs;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class BFSAlgo {
     int V;
@@ -61,6 +62,31 @@ public class BFSAlgo {
         }
 
     }
+
+    public void topological(){
+        boolean visited[]=new boolean[V];
+        Stack<Integer> st=new Stack<Integer>();
+        for(int i=0;i<V;i++){
+            if(!visited[i]){
+                topologicalUtil(i,visited,st);
+            }
+        }
+        while(!st.isEmpty()){
+            System.out.print(st.pop()+" ");
+        }
+    }
+
+    public void topologicalUtil(int i,boolean visited[],Stack<Integer> st){
+        visited[i]=true;
+        Iterator<Integer> it=adjList[i].listIterator();
+        while(it.hasNext()){
+            int next=it.next();
+            if(!visited[next]){
+                topologicalUtil(next, visited, st);
+            }
+        }
+        st.push(i);
+    }
     public static void main(String args[]){
         BFSAlgo g = new BFSAlgo(8);
 		g.addEdge( 0, 1);
@@ -73,7 +99,7 @@ public class BFSAlgo {
         g.addEdge(4, 7);
         g.addEdge(5, 6);
         g.addEdge(6, 7);
-        g.DFS(0);
+        g.topological();
  
 
     }
