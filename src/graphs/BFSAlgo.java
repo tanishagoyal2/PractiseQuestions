@@ -87,19 +87,47 @@ public class BFSAlgo {
         }
         st.push(i);
     }
+
+    //no of islands question or in simple terms no of components in a graph
+
+    public void BFSDis(){
+        boolean visited[]=new boolean[V];
+        int count=0;
+        for(int i=0;i<V;i++){
+            if(!visited[i]){
+                BFSDisUtil(i,visited);
+                count++;   
+            }
+        }
+        System.out.println(count);
+    }
+
+    public void BFSDisUtil(int i,boolean visited[]){
+        visited[i]=true;
+        Queue<Integer> queue=new LinkedList<Integer>();
+        queue.add(i);
+        while(!queue.isEmpty()){
+            int top=queue.poll();
+            Iterator<Integer> it=adjList[top].listIterator();
+            while(it.hasNext()){
+                int next=it.next();
+                if(!visited[next]){
+                    visited[next]=true;
+                    queue.add(next);
+                }
+            }
+        }
+    }
     public static void main(String args[]){
-        BFSAlgo g = new BFSAlgo(8);
+        BFSAlgo g = new BFSAlgo(7);
 		g.addEdge( 0, 1);
-        g.addEdge(0, 3);
-        g.addEdge(1, 2);
-        g.addEdge(3, 4);
-        g.addEdge(3, 7);
-        g.addEdge(4, 5);
+        g.addEdge(0, 2);
+        g.addEdge(2,3);
+        g.addEdge(1,3);
+        g.addEdge(4,5);
+        g.addEdge(5,6);
         g.addEdge(4, 6);
-        g.addEdge(4, 7);
-        g.addEdge(5, 6);
-        g.addEdge(6, 7);
-        g.topological();
+        g.BFSDis();
  
 
     }
