@@ -8,6 +8,7 @@ import java.util.Stack;
 public class BFSAlgo {
     int V;
     LinkedList<Integer> adjList[];
+
     BFSAlgo(int v){
         this.V=v;
         adjList=new LinkedList[v];
@@ -89,7 +90,6 @@ public class BFSAlgo {
     }
 
     //no of islands question or in simple terms no of components in a graph
-
     public void BFSDis(){
         boolean visited[]=new boolean[V];
         int count=0;
@@ -118,16 +118,46 @@ public class BFSAlgo {
             }
         }
     }
+    
+    public void shortestPathInUnweighted(int source,int des){
+        int path[]=new int[V];
+        int dist[]=new int[V];
+        boolean visited[]=new boolean[V];
+        for(int i=0;i<V;i++){
+            dist[i]=Integer.MAX_VALUE;
+        }
+        dist[source]=0;
+        visited[source]=true;
+        Queue<Integer> queue =new LinkedList<Integer>();
+        queue.add(source);
+        while(!queue.isEmpty()){
+            int top=queue.poll();
+            Iterator<Integer> it=adjList[top].listIterator();
+            while(it.hasNext()){
+                int next=it.next();
+                if(!visited[next]){
+                    dist[next]=dist[top]+1;
+                    path[next]=top;
+                    visited[next]=true;
+                    queue.add(next);
+                }
+            }
+        }
+        System.out.println(dist[des]);
+    }
     public static void main(String args[]){
-        BFSAlgo g = new BFSAlgo(7);
+        BFSAlgo g = new BFSAlgo(8);
 		g.addEdge( 0, 1);
-        g.addEdge(0, 2);
-        g.addEdge(2,3);
-        g.addEdge(1,3);
+        g.addEdge(0, 3);
+        g.addEdge(1,2);
+        g.addEdge(3,4);
+        g.addEdge(3,7);
         g.addEdge(4,5);
-        g.addEdge(5,6);
         g.addEdge(4, 6);
-        g.BFSDis();
+        g.addEdge(4, 7);
+        g.addEdge(5, 6);
+        g.addEdge(6,7);
+        g.shortestPathInUnweighted(0, 7);
  
 
     }
