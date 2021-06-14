@@ -39,6 +39,28 @@ public class BFSAlgo {
             }
         }
     }
+
+    public void DFS(int source){
+        boolean visited[]=new boolean [V];
+        for(int i=0;i<V;i++){
+            if(!visited[i]){
+                DFSUtil(i,visited);
+            }
+        }
+    }
+
+    public void DFSUtil(int i,boolean visited[]){
+        visited[i]=true;
+        System.out.println(i+" ");
+        Iterator<Integer> it=adjList[i].listIterator();
+        while(it.hasNext()){
+            int next=it.next();
+            if(!visited[next]){
+                DFSUtil(next, visited);
+            }
+        }
+
+    }
     public static void main(String args[]){
         BFSAlgo g = new BFSAlgo(8);
 		g.addEdge( 0, 1);
@@ -51,7 +73,7 @@ public class BFSAlgo {
         g.addEdge(4, 7);
         g.addEdge(5, 6);
         g.addEdge(6, 7);
-        g.BFS(0);
+        g.DFS(0);
  
 
     }
