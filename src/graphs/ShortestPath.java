@@ -19,7 +19,8 @@ public class ShortestPath {
     public void addEdge(int u,int v,int w){
         adjList[u].add(new AdjNode(v, w));
     }
-    //shortest path from source to every other vertices
+
+    //shortest path from source to every other vertices in a directed graph
     public void findPath(int source){
         //first find the topological sort
         Stack<Integer> st=new Stack<Integer>();
@@ -63,6 +64,7 @@ public class ShortestPath {
             }
         }
     }
+    
     public void topologicalUtil(int i,Stack<Integer>st ,boolean visited[]){
         visited[i]=true;
         Iterator<AdjNode> it=adjList[i].listIterator();
@@ -74,7 +76,8 @@ public class ShortestPath {
         }
         st.add(i);
     }
-   public static void main(String args[]){
+    
+    public static void main(String args[]){
     ShortestPath g = new ShortestPath(6);
         g.addEdge(0, 1, 2);
         g.addEdge(0, 4, 1);
