@@ -8,7 +8,7 @@ import java.util.Stack;
 public class BFSAlgo {
     int V;
     LinkedList<Integer> adjList[];
-
+    @SuppressWarnings("unchecked")
     BFSAlgo(int v){
         this.V=v;
         adjList=new LinkedList[v];

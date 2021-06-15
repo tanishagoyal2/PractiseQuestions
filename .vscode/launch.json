@@ -1,0 +1,175 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch ArrayQuestions",
+            "request": "launch",
+            "mainClass": "Arrays.ArrayQuestions",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch CountTrailingZeros",
+            "request": "launch",
+            "mainClass": "Arrays.CountTrailingZeros",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch NewYearChaos",
+            "request": "launch",
+            "mainClass": "Arrays.NewYearChaos",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch MyQueue",
+            "request": "launch",
+            "mainClass": "MyQueue",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch StairCase",
+            "request": "launch",
+            "mainClass": "dynamic.StairCase",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch BFSAlgo",
+            "request": "launch",
+            "mainClass": "graphs.BFSAlgo",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch Islands",
+            "request": "launch",
+            "mainClass": "graphs.Islands",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch ShortestPath",
+            "request": "launch",
+            "mainClass": "graphs.ShortestPath",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch dijikshtra",
+            "request": "launch",
+            "mainClass": "graphs.dijikshtra",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch primsAlgo",
+            "request": "launch",
+            "mainClass": "graphs.primsAlgo",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch MaxPointsInALine",
+            "request": "launch",
+            "mainClass": "hash.MaxPointsInALine",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch SmallestSubsequence",
+            "request": "launch",
+            "mainClass": "hash.SmallestSubsequence",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch heapQuestions",
+            "request": "launch",
+            "mainClass": "heaps.heapQuestions",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch LinkedListClass",
+            "request": "launch",
+            "mainClass": "linkedList.LinkedListClass",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch partition",
+            "request": "launch",
+            "mainClass": "linkedListQuestion.partition",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch ZeroMat",
+            "request": "launch",
+            "mainClass": "nuts.ZeroMat",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch stringCompress",
+            "request": "launch",
+            "mainClass": "nuts.stringCompress",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch stringRotation",
+            "request": "launch",
+            "mainClass": "nuts.stringRotation",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch sortStack",
+            "request": "launch",
+            "mainClass": "sortStack",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch Notification",
+            "request": "launch",
+            "mainClass": "sorting.Notification",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch PractiseQuestions",
+            "request": "launch",
+            "mainClass": "sorting.PractiseQuestions",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch bstQuestion",
+            "request": "launch",
+            "mainClass": "trees.bstQuestion",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch sumAtKLevel",
+            "request": "launch",
+            "mainClass": "trees.sumAtKLevel",
+            "projectName": "competitive"
+        }
+    ]
+}
