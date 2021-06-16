@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch primeNo",
+            "request": "launch",
+            "mainClass": "Arrays.primeNo",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch findPath",
+            "request": "launch",
+            "mainClass": "graphs.findPath",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
