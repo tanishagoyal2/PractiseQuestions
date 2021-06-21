@@ -30,12 +30,61 @@ public class KpartitionEqual {
             System.out.println("not possible");
         }
     }
-    public static void main(String args[]){
-        int n=3;
-        int arr[]={ 4, 2, 5 };
-        int k=3;
-        equalSum(n, arr, k);
 
+    //Split the given array into K sub-arrays such that maximum sum of all sub arrays is minimum
+    public static void solve(int n,int arr[],int k){
+        int low=Integer.MIN_VALUE;
+        int high=0;
+        int answer=0;
+        //lowest maximum possible value can be the largest value in array;
+        //highest maximum possible value can be the whole arry sum;
+        for(int i=0;i<n;i++){
+            if(low<arr[i]){
+                low=arr[i];
+            }
+            high+=arr[i];
+        }
+        while(low<=high){
+            //find the middle element
+            int mid =(low+high)/2;
+            if(check(mid,arr,n,k)){
+                answer=mid;
+                high=mid-1;
+            }
+            else{
+                low=mid+1;
+            }
+        }
+        System.out.println(answer);
+    }
+    public static boolean check(int mid,int arr[],int n,int k){
+        int count=0;
+        int sum=0;
+        for(int i=0;i<n;i++){
+            if(arr[i]>mid){
+                return false;
+            }
+            sum+=arr[i];
+            if(sum>mid){
+                count++;
+                sum+=arr[i];
+            }
+        }
+        count++;
+        if(count<=k){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    // Driver Code
+    public static void main(String[] args)
+    {
+        int array[] = {10,20,30,40,50 };
+        int n = array.length;
+        int K = 3;
+        solve(n,array, K);
     }
     
 }
