@@ -145,6 +145,9 @@ public class ArrayQuestions {
 	}
 
 
+	public static void sortString(String a,String b){
+
+	}
 
 	public static void maxIndexDiff(int arr[], int n) { 
         
@@ -291,21 +294,51 @@ public class ArrayQuestions {
 			System.out.println("NO");
 		}
 	}
-	public static void main(String args[]) {
-		String str="input is good";
-
-		Scanner sc=new Scanner(System.in);
-		String input[]=sc.nextLine().split(" ");
-		int n=Integer.parseInt(input[0]);
-		int m=Integer.parseInt(input[1]);
-		int k=Integer.parseInt(input[2]);
-		int s=Integer.parseInt(input[3]);
-		char arr[][]=new char [n][m];
-		for(int i=0;i<n;i++){
-			for(int j=0;j<m;j++){
-				arr[i][j]=sc.next().charAt(0);
+	
+	public static int compareTo(String s1,String s2){
+		int i=0;
+		while(i<s1.length() && i<s2.length()){
+			if(s1.charAt(i)>s2.charAt(i)){
+				return 1;
 			}
+			else if(s1.charAt(i)<s2.charAt(i)){
+				return -1;
+			}
+			i++;
 		}
-		magicalBean(n,m,k,s,arr);
+		if(s1.length()>s2.length()){
+			return 1;
+		}
+		else{
+			return -1;
+		}
+	}
+	public static void sortfunc(int n,String arr[]){
+		for (int i = 0; i < n; i++) {
+
+            for (int j = 0; j < n - i - 1; j++) {
+
+                if (compareTo(arr[j], arr[j + 1]) > 0) {
+
+                    String temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+
+            }
+        }
+
+	}
+	public static void main(String args[]) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		String arr[]=new String[n];
+		for(int i=0;i<n;i++){
+			arr[i]=sc.next().split(" ")[0];
+		}
+		sort(n,arr);
+		for(int i=0;i<n;i++){
+			System.out.println(arr[i]);
+		}
 	}
 }

@@ -6,6 +6,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch KpartitionEqual",
+            "request": "launch",
+            "mainClass": "Arrays.KpartitionEqual",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch stringCycle",
+            "request": "launch",
+            "mainClass": "string.stringCycle",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch string",
+            "request": "launch",
+            "mainClass": "Arrays.string",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch noofRoads",
+            "request": "launch",
+            "mainClass": "hash.noofRoads",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
             "name": "Launch primeNo",
             "request": "launch",
             "mainClass": "Arrays.primeNo",
