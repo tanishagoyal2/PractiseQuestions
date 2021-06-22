@@ -329,16 +329,36 @@ public class ArrayQuestions {
         }
 
 	}
+//	The stock span problem is a financial problem where we have a series of N daily price quotes for a stock and we need to calculate span of stock’s price for all N days. You are given an array of length N, where ith element of array denotes the price of a stock on ith. Find the span of stock's price on ith day, for every 1<=i<=N.
+//	A span of a stock's price on a given day, i, is the maximum number of consecutive days before the (i+1)th day, for which stock's price on these days is less than or equal to that on the ith day.
+	public static void stockSpan(int arr[],int n){
+		int solu[]=new int[n];
+		solu[0]=1;
+		int max=arr[0];
+		for(int i=1;i<n;i++){
+			if(max<arr[i]){
+				max=arr[i];
+			}
+			if(max<=arr[i]){
+				solu[i]=i+1;
+			}
+			else{
+				if(arr[i-1]>arr[i]){
+					solu[i]=1;
+				}
+				else{
+					solu[i]=solu[i-1]+1;
+				}
+			}
+		}
+		for(int i=0;i<n;i++){
+			System.out.print(solu[i]+" ");
+		}
+	}
 	public static void main(String args[]) {
 		Scanner sc=new Scanner(System.in);
-		int n=sc.nextInt();
-		String arr[]=new String[n];
-		for(int i=0;i<n;i++){
-			arr[i]=sc.next().split(" ")[0];
-		}
-		sort(n,arr);
-		for(int i=0;i<n;i++){
-			System.out.println(arr[i]);
-		}
+		int n=5;
+		int arr[]={30,35,40,38,35};
+		stockSpan(arr, n);
 	}
 }
