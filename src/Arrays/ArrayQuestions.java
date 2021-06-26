@@ -1,6 +1,10 @@
 package Arrays;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
-public class ArrayQuestions {
+import java.lang.*;
+public class ArrayQuestions extends Throwable{
 
 	public static void count(int arr[],int p,int n) {
 		int array[]=new int [n];
@@ -355,10 +359,34 @@ public class ArrayQuestions {
 			System.out.print(solu[i]+" ");
 		}
 	}
-	public static void main(String args[]) {
+	
+	//The kingsmen are back! They have N buildings built in line numbered from 1 to N.
+	//Each building has a height h denoted by A[i]. The kingsmen will jump from building i to building j only if:
+	public static void kingsman(int arr[],int n){
+		int max=Integer.MIN_VALUE;
+		int count=0;
+		for(int i=0;i<n;i++){
+			int midmax=Integer.MIN_VALUE;
+			for(int j=i+1;j<n;j++){
+				max=Math.max(arr[i],arr[j]);
+				if(midmax<arr[j]){
+					midmax=arr[j];
+				}
+				if(midmax>max || arr[i]==arr[j]){
+					count++;
+				}
+			}
+		}
+		System.out.println(count*2);
+	}
+	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
-		int n=5;
-		int arr[]={30,35,40,38,35};
-		stockSpan(arr, n);
+		int n=sc.nextInt();
+		int arr[]=new int[n];
+		for(int i=0;i<n;i++){
+			String no=sc.next().split(" ")[0];
+			arr[i]=Integer.parseInt(no);
+		}
+		kingsman(arr, n);
 	}
 }

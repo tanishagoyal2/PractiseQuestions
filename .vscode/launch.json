@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch maximumArraySum",
+            "request": "launch",
+            "mainClass": "dynamic.maximumArraySum",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch LIS",
+            "request": "launch",
+            "mainClass": "dynamic.LIS",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
             "name": "Launch KpartitionEqual",
             "request": "launch",
             "mainClass": "Arrays.KpartitionEqual",
