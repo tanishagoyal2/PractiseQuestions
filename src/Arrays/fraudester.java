@@ -6,6 +6,8 @@ import java.util.List;
 
 public class fraudester {
 
+
+
     public static void solve(List<Integer> arr,int n,int k){
         ArrayList<Integer> res=new ArrayList<Integer>();
         int count=0;
@@ -16,7 +18,6 @@ public class fraudester {
             else{
                 Collections.sort(res);
                 double median= k%2==0 ?(res.get((k/2)-1)+res.get(k/2))/2.0 :res.get(k/2);
-                System.out.println("media is "+median);
                 res.remove(0);
                 res.add(arr.get(i));
                 if(arr.get(i)>=2*median){
