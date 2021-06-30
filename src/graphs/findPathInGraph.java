@@ -2,6 +2,9 @@ package graphs;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 public class findPathInGraph {
     int V;
@@ -43,9 +46,68 @@ public class findPathInGraph {
     }
 
     //find path from source to destination using bfs traversal
-    public void findPath(int s,int d){
-        
+    private void findpaths(List<List<Integer> > g,
+                              int src, int dst, int v)
+{
+     
+    // Create a queue which stores
+    // the paths
+    Queue<List<Integer> > queue = new LinkedList<>();
+ 
+    // Path vector to store the current path
+    List<Integer> path = new ArrayList<>();
+    path.add(src);
+    queue.offer(path);
+     
+    while (!queue.isEmpty())
+    {
+        path = queue.poll();
+        int last = path.get(path.size() - 1);
+ 
+        // If last vertex is the desired destination
+        // then print the path
+        if (last == dst)
+        {
+            printPath(path);
+        }
+ 
+        // Traverse to all the nodes connected to
+        // current vertex and push new path to queue
+        List<Integer> lastNode = g.get(last);
+        for(int i = 0; i < lastNode.size(); i++)
+        {
+            if (isNotVisited(lastNode.get(i), path))
+            {
+                List<Integer> newpath = new ArrayList<>(path);
+                newpath.add(lastNode.get(i));
+                queue.offer(newpath);
+            }
+        }
     }
+}
+ 
+private static void printPath(List<Integer> path)
+{
+    int size = path.size();
+    for(Integer v : path)
+    {
+        System.out.print(v + " ");
+    }
+    System.out.println();
+}
+ 
+// Utility function to check if current
+// vertex is already present in path
+private static boolean isNotVisited(int x,
+                                    List<Integer> path)
+{
+    int size = path.size();
+    for(int i = 0; i < size; i++)
+        if (path.get(i) == x)
+            return false;
+             
+    return true;
+}
     public static void main(String args[]){
         findPathInGraph g=new findPathInGraph(4);
         g.addEdge(0, 1);
@@ -54,7 +116,7 @@ public class findPathInGraph {
         g.addEdge(2, 0);
         g.addEdge(2, 1);
         g.addEdge(1, 3);
-        g.pathprint(2, 3);
+        g.findpaths(g, 2, 3);
     }
     
 }

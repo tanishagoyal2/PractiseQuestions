@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch journeytoMoon",
+            "request": "launch",
+            "mainClass": "graphs.journeytoMoon",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
             "name": "Launch findPathInGraph",
             "request": "launch",
             "mainClass": "graphs.findPathInGraph",
