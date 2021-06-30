@@ -1,10 +1,8 @@
 package dynamic;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Map.Entry;
 
 public class LIS {
     //Given N elements, write a program that prints the length of the longest increasing subsequence whose adjacent element difference is one. 

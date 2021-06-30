@@ -23,6 +23,17 @@ public class recursion {
             }
         }
     }
+    public static void solve(String ssf,int k,int n,String string){
+        if(k==n){
+            System.out.println(ssf);
+            return ;
+        }
+        else{
+            char ch=string.charAt(k);
+            solve(ssf+Character.toLowerCase(ch),k+1,n,string);
+            solve(ssf+Character.toUpperCase(ch),k+1,n,string);
+        }
+    }
     public static void main(String args[]){
         Scanner sc=new Scanner(System.in);
         String string=sc.nextLine();

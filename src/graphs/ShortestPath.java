@@ -1,13 +1,14 @@
 package graphs;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Stack;
 
 public class ShortestPath {
 
-    int V;
-    LinkedList<AdjNode> adjList[];
+    static int V;
+    static LinkedList<AdjNode> adjList[];
     ShortestPath(int v){
         this.V=v;
         adjList=new LinkedList[v];
