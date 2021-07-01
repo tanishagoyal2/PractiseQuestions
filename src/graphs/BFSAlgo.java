@@ -1,7 +1,9 @@
 package graphs;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
 
@@ -119,6 +121,41 @@ public class BFSAlgo {
         }
     }
     
+
+    public static void snakaAndLadder(List<List<Integer>> ladder, List<List<Integer>> snakes){
+       int arr[]=new int[101];
+       Arrays.fill(arr,-1); 
+       for(int i=0;i<ladder.size();i++){
+           arr[ladder.get(i).get(0)]=ladder.get(i).get(1);   
+        }
+        for(int i=0;i<snakes.size();i++){
+            arr[snakes.get(i).get(0)]=snakes.get(i).get(1);
+        }
+        Queue<entry> queue=new LinkedList<entry>();
+        boolean visited[]=new boolean[101];
+        queue.add(new entry(1,1));
+        while(!queue.isEmpty()){
+            entry top=queue.poll();
+            if(top.dest==100){
+                System.out.println(top.moves);
+                return ;
+            }
+            for(int i=1;i<=6;i++){
+                if(!visited[top.dest+i]){
+                    visited[top.dest+i]=true;
+                    entry newentry=new entry(top.dest+i,top.moves+1);
+                    if(arr[top.dest+i]!=-1){
+                     newentry.dest=arr[top.dest+i];
+                    }
+                    else{
+                        newentry.dest=top.dest+i;
+                    }
+                    queue.add(newentry);
+                }
+            }
+        }
+        System.out.println(-1);
+    }
     public void shortestPathInUnweighted(int source,int des){
         int path[]=new int[V];
         int dist[]=new int[V];
@@ -147,10 +184,6 @@ public class BFSAlgo {
     }
     public static void main(String args[]){
         BFSAlgo g = new BFSAlgo(8);
-        
-        boolean st=Boolean.valueOf("false");
-        System.out.println(st);
-
     }
     
 }
@@ -161,5 +194,13 @@ class Edge{
     Edge(int src,int des){
         this.src=src;
         this.des=des;
+    }
+}
+class entry{
+    int dest;
+    int moves;
+    entry(int d,int m){
+        this.dest=d;
+        this.moves=m;
     }
 }
