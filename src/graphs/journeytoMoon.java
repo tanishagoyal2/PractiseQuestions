@@ -17,7 +17,11 @@ public class journeytoMoon {
         adjList[v].add(u);
     }
     
-    public void COUNTCOMPONENETS(){
+    public void COUNTCOMPONENETS(int n,List<List<Integer>> astronut){
+        this.V=n;
+        for(int i=0;i<astronut.size();i++){
+            addEdge(astronut.get(i).get(0), astronut.get(i).get(1));
+        }
         int res=(V*(V-1))/2;
         boolean visited[]=new boolean[V];
         for(int i=0;i<V;i++){
@@ -43,8 +47,8 @@ public class journeytoMoon {
     public static void main(String args[]){
         journeytoMoon obj=new journeytoMoon(4);
         obj.addEdge(0,2);
-        //obj.addEdge(2,3);
-        //obj.addEdge(1,4);
+        obj.addEdge(2,3);
+        obj.addEdge(1,4);
         obj.COUNTCOMPONENETS();
     }
 }

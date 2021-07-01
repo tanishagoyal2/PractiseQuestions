@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch krushkals",
+            "request": "launch",
+            "mainClass": "graphs.krushkals",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
             "name": "Launch journeytoMoon",
             "request": "launch",
             "mainClass": "graphs.journeytoMoon",
