@@ -71,6 +71,7 @@ public class krushkals {
         obj.solve();
     }
 }
+
 class Edges{
     int u;
     int v;

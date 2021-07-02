@@ -3,7 +3,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
+import java.util.stream.Stream;
 import java.lang.*;
+import static java.util.stream.Collectors.toList;
 public class ArrayQuestions extends Throwable{
 
 	public static void count(int arr[],int p,int n) {
@@ -379,14 +381,73 @@ public class ArrayQuestions extends Throwable{
 		}
 		System.out.println(count*2);
 	}
+	
+	public static void ransomNotes(List<String> magazine,List<String> notes){
+		boolean flag =true;
+		Collections.sort(magazine);
+		for(String i:notes){
+			if(magazine.contains(i)){
+				magazine.remove(i);
+			}
+			else{
+				flag=false;
+				break;
+			}
+		}
+		System.out.println(flag?"Yes":"No");
+	}
+	
+
+	public static boolean solveUtil(String a,String b,int m,int n){
+        if(n!=0 && m==0){
+            return false;
+        }
+		if(n==0){
+			return true;
+		}
+        else{
+            if(a.charAt(m-1)==b.charAt(n-1) || (Character.isLowerCase(a.charAt(m-1)) && Character.toUpperCase(a.charAt(m-1))==b.charAt(n-1))){
+				System.out.println("matched found at "+a.charAt(m-1)+" "+b.charAt(n-1));
+                return solveUtil(a, b,m-1,n-1);
+            }
+			else{
+				if(Character.isUpperCase(a.charAt(m-1))){
+					return false;
+				}
+				else{
+					return solveUtil(a, b, m-1, n);
+				}
+			}
+		}
+    }
+	public static long countArray(int n, int k, int x) {
+		// Return the number of ways to fill in the array.
+	
+		long dp[][]=new long[n+1][3];
+		dp[1][1]=1;
+		dp[1][2]=0;
+		for(int i=2;i<=n;i++){
+			for(int j=1;j<=2;j++){
+				if(j==1){
+					dp[i][j]=(dp[i-1][2]*(k-1))%1000000007;
+				}
+				else{
+					dp[i][j]=(dp[i-1][1]+dp[i-1][2]*(k-2))%1000000007;
+				}
+			}
+		}
+		return dp[n][2];
+		}
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
-		int n=sc.nextInt();
-		int arr[]=new int[n];
-		for(int i=0;i<n;i++){
-			String no=sc.next().split(" ")[0];
-			arr[i]=Integer.parseInt(no);
-		}
-		kingsman(arr, n);
+		System.out.println(countArray(761, 99, 1));
+	}
+}
+class student {
+	String name;
+	int score ;
+	student(String n,int s){
+		this.name=n;
+		this.score=s;
 	}
 }
