@@ -1,11 +1,5 @@
 package Arrays;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.*;
-import java.util.stream.Stream;
-import java.lang.*;
-import static java.util.stream.Collectors.toList;
 public class ArrayQuestions extends Throwable{
 
 	public static void count(int arr[],int p,int n) {
@@ -437,10 +431,45 @@ public class ArrayQuestions extends Throwable{
 			}
 		}
 		return dp[n][2];
+	}
+
+	//using recusion find the every subset possible of a given set
+	static List<List<Integer>> arraylist=new ArrayList<>();
+	public static void subsetPosssible(List<Integer> subset,int arr[],int pos){
+		if(pos==arr.length){
+			arraylist.add(subset);
+			return ;
 		}
+		subsetPosssible(subset, arr, pos+1);
+		List<Integer> newsubset=new ArrayList<Integer>(subset);
+		newsubset.add(arr[pos]);
+		subsetPosssible(newsubset, arr, pos+1);
+	}
+
+	//using backtracking find the all subset possible of a given set
+	//not completed
+	public static void subsetPossibleBt(List<List<Integer>> res,List<Integer> subset,int arr[],int pos){
+		res.add(subset);
+		for(int i=pos;i<arr.length;i++){
+			subset.add(arr[i]);
+			subsetPossibleBt(res, subset, arr, pos+1);
+			subset.remove(arr[i]);
+		}	
+	}
+
+	public static void subsetcontinoussequence(String str){
+		long place=1;
+		int n=str.length();
+		long sum=0;
+		for(int i=n;i>0;i--){
+			sum=(sum+i*(place)*Character.getNumericValue(str.charAt(i-1)))%1000000007;
+            place=((place*10)+1)%1000000007;
+		}
+		System.out.println(sum);
+	}
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
-		System.out.println(countArray(761, 99, 1));
+		subsetcontinoussequence("972698438521");
 	}
 }
 class student {
