@@ -81,14 +81,11 @@ public class KpartitionEqual {
     // Driver Code
     public static void main(String[] args)
     {
-        int array[] = {10,20,30,40,50 };
+        int array[] = {3,6,9,12,14};
         int n = array.length;
-        int K = 3;
+        int K = 4;
         solve(n,array, K);
-        int prerequisites[][]=new int[5][6];
-        for(int i=0;i<prerequisites.length;i++){
-            addEdge(prerequisites[i][0],prerequisites[i][1]);
-        }
+        
     }
     
 }

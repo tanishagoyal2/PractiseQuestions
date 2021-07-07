@@ -1,5 +1,6 @@
 package recursion;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class recursion {
@@ -34,10 +35,24 @@ public class recursion {
             solve(ssf+Character.toUpperCase(ch),k+1,n,string);
         }
     }
+
+    //Find the number of ways that a given integer, , can be expressed as the sum of the  powers of unique, natural numbers.
+    public static int findvalue(int x,int n,int k){
+        int value=(int)(x-Math.pow(k,n));
+        if(value==1){
+            return 1;
+        }
+        if(value<0){
+            return 0;
+        }
+        else{
+            return findvalue(value, n, k+1)+findvalue(x, n, k+1);
+        }
+    }
     public static void main(String args[]){
         Scanner sc=new Scanner(System.in);
-        String string=sc.nextLine();
-        upperLowercase("", 0, string.length(), string);
+        int res=findvalue(800,2,1);
+        System.out.println(res);
     }
     
 }

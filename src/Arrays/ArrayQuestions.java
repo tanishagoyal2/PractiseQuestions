@@ -1,4 +1,5 @@
 package Arrays;
+import java.math.BigInteger;
 import java.util.*;
 public class ArrayQuestions extends Throwable{
 
@@ -450,10 +451,12 @@ public class ArrayQuestions extends Throwable{
 	//not completed
 	public static void subsetPossibleBt(List<List<Integer>> res,List<Integer> subset,int arr[],int pos){
 		res.add(subset);
+		System.out.println(res);
+		List<Integer> newsubset=new ArrayList<>(subset);
 		for(int i=pos;i<arr.length;i++){
-			subset.add(arr[i]);
-			subsetPossibleBt(res, subset, arr, pos+1);
-			subset.remove(arr[i]);
+			newsubset.add(arr[i]);
+			subsetPossibleBt(res, newsubset, arr, pos+1);
+			newsubset.remove(subset.size()-1);
 		}	
 	}
 
@@ -467,10 +470,78 @@ public class ArrayQuestions extends Throwable{
 		}
 		System.out.println(sum);
 	}
+
+	public static void modifiedFibb(int a,int b,int n){
+		BigInteger dp[]=new BigInteger[n+1];
+		dp[1]=BigInteger.valueOf(a);
+		dp[2]=BigInteger.valueOf(b);
+		for(int i=3;i<=n;i++){
+			dp[i]=dp[i-2].add(dp[i-1].pow(2));
+		}
+		System.out.println(dp[n]);
+	}
+	
+	
+	public static void atLeasthalf(int arr[],int n){
+		HashMap<Integer,Integer> tm=new HashMap<Integer,Integer>();
+		for(int i=0;i<n;i++){
+			if(tm.containsKey(arr[i])){
+				tm.replace(arr[i],tm.get(arr[i]),tm.get(arr[i])+1);
+				System.out.println("for "+arr[i]+" value is "+tm.get(arr[i]));
+			}
+			else{
+				tm.put(arr[i],1);
+			}
+		}
+		tm=sortByValue(tm);
+		int count=0;
+		int remove=0;
+		for(Map.Entry<Integer,Integer> e:tm.entrySet()){
+			System.out.println(remove+" "+e.getKey()+" value " +e.getValue());
+			if(remove+e.getValue()<(n/2)){
+				remove+=e.getValue();
+				count++;
+			}
+			else{
+				break;
+			}
+		}
+		System.out.println(count+1);
+	}
+	public static HashMap<Integer, Integer> sortByValue(HashMap<Integer, Integer> hm)
+    {
+        // Create a list from elements of HashMap
+        List<Map.Entry<Integer, Integer> > list =
+               new LinkedList<Map.Entry<Integer, Integer> >(hm.entrySet());
+ 
+        // Sort the list
+        Collections.sort(list, new Comparator<Map.Entry<Integer, Integer> >() {
+            public int compare(Map.Entry<Integer, Integer> o1,
+                               Map.Entry<Integer, Integer> o2)
+            {
+                return (o2.getValue()).compareTo(o1.getValue());
+            }
+        });
+         
+        // put data from sorted list to hashmap
+        HashMap<Integer, Integer> temp = new LinkedHashMap<Integer, Integer>();
+        for (Map.Entry<Integer, Integer> aa : list) {
+            temp.put(aa.getKey(), aa.getValue());
+        }
+        return temp;
+    }
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
-		subsetcontinoussequence("972698438521");
+		int arr[]={3,3,3,3,5,5,5,2,2,7};
+		atLeasthalf(arr, 10);
 	}
+
+
+}
+
+class elementData{
+	int ele;
+	int freq;
 }
 class student {
 	String name;
