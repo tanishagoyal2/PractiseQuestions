@@ -530,10 +530,47 @@ public class ArrayQuestions extends Throwable{
         }
         return temp;
     }
+
+
+	public static void mobileString(String digits){
+		HashMap<Integer, String> hm=new HashMap<Integer,String>();
+		hm.put(2, "abc");
+		hm.put(3, "def");
+		hm.put(4, "ghi");
+		hm.put(5, "jkl");
+		hm.put(6, "mno");
+		hm.put(7, "pqrs");
+		hm.put(8, "tuv");
+		hm.put(9, "wxyz");
+		List<String> li=new ArrayList<String>();
+		if(digits.length()==0){
+			System.out.println(li);
+		}
+		recusive(li,new StringBuilder(), digits, hm, 0);
+		
+		System.out.println(li);
+	}
+
+	public static void recusive(List<String> li,StringBuilder str,String digits,HashMap<Integer,String> hm,int k){
+		if(str.length()==digits.length()){
+			li.add(str.toString());
+			return;
+		}
+		else{
+			int n=(int)(digits.charAt(k)-'0');
+			String chrset=hm.get(n);
+			for(int i=0;i<chrset.length();i++){
+				str.append(chrset.charAt(i));
+				recusive(li, str, digits, hm, k+1);
+				str.delete(str.length()-1, str.length());
+			}
+		}
+	}
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
 		int arr[]={3,3,3,3,5,5,5,2,2,7};
-		atLeasthalf(arr, 10);
+		int n=arr.length;
+		mobileString("234");
 	}
 
 

@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch sumProbelm",
+            "request": "launch",
+            "mainClass": "Arrays.sumProbelm",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
             "name": "Launch krushkals",
             "request": "launch",
             "mainClass": "graphs.krushkals",

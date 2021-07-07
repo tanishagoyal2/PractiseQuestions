@@ -1,6 +1,8 @@
 package recursion;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class recursion {
@@ -36,6 +38,22 @@ public class recursion {
         }
     }
 
+
+    //parantheses
+    public static void paran(List<String> li,int n,int open,int close,String ssf){
+        if(close==n){
+            li.add(ssf.toString());
+            return ;
+        }
+        else{
+            if(open<n){
+                paran(li, n, open+1, close, ssf+"(");
+            }
+            if(close<open){
+                paran(li, n, open, close+1, ssf+")");
+            }
+        }
+    }
     //Find the number of ways that a given integer, , can be expressed as the sum of the  powers of unique, natural numbers.
     public static int findvalue(int x,int n,int k){
         int value=(int)(x-Math.pow(k,n));
@@ -51,7 +69,8 @@ public class recursion {
     }
     public static void main(String args[]){
         Scanner sc=new Scanner(System.in);
-        int res=findvalue(800,2,1);
+        List<String> res=new ArrayList<String>();
+        paran(res, 3, 0, 0, "");
         System.out.println(res);
     }
     
