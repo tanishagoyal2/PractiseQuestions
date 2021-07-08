@@ -63,8 +63,25 @@ public class StairCase {
 		System.out.println(flag);
 	}
 	
+
+	public static void jumpCase4(String s,int min,int max){
+		int n=s.length();
+		boolean dp[]=new boolean[n];
+		dp[0]=true;
+		for(int i=0;i<n-1;i++){
+			if(s.charAt(i)=='0' && dp[i]){
+				for(int j=i+min;j<=i+max && j<n;j++){
+					if(s.charAt(j)=='0'){
+						dp[j]=true;
+					}
+				}
+			}
+		}
+		System.out.println(dp[n-1]);
+	}
 	public static void main(String args[]) throws Exception{
 		int arr[]= {3,0,2,1,2};
-		jumpGame3(arr,2);
+		String s="01";
+		jumpCase4(s, 2, 3);
 	}
 }

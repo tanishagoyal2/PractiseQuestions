@@ -67,11 +67,54 @@ public class recursion {
             return findvalue(value, n, k+1)+findvalue(x, n, k+1);
         }
     }
+
+    //using recursion
+    public static boolean interleavingString(String s1,String s2,String s3,int m,int n,int k){
+        if(m==-1 && n==-1 && k==-1){
+            return true;
+        }
+        if(m>=0 && s1.charAt(m)==s3.charAt(k)){
+           return interleavingString(s1, s2, s3, m-1, n, k-1); 
+        }
+        if(n>=0 && s2.charAt(n)==s3.charAt(k)){
+            return interleavingString(s1, s2, s3, m, n-1, k-1);
+        }
+        return false;
+    }
+
+    //using dynamic approach
+    public static void interleavingString(String s1,String s2,String s3){
+        int m=s1.length();
+        int n=s2.length();
+        boolean dp[][]=new boolean[m+1][n+1];
+        for(int i=0;i<=m;i++){
+            for(int j=0;j<=n;j++){
+                if(i==0 && j==0){
+                    dp[i][j]=true;
+                    continue;
+                }
+                if(i==0){
+                    dp[i][j]=dp[i][j-1]&& s2.charAt(j-1)==s3.charAt(i+j-1);
+                    continue;
+                }
+                if(j==0){
+                    dp[i][j]=dp[i-1][j]&& s1.charAt(i-1)==s3.charAt(i+j-1);
+                    continue;
+                }
+                else{
+                    dp[i][j]=(dp[i][j-1]&& s2.charAt(j-1)==s3.charAt(i+j-1))|| (dp[i-1][j] && s1.charAt(i-1)==s3.charAt(i+j-1));
+                }
+            }   
+        }
+        System.out.println(dp[m][n]);
+    }
     public static void main(String args[]){
         Scanner sc=new Scanner(System.in);
-        List<String> res=new ArrayList<String>();
-        paran(res, 3, 0, 0, "");
-        System.out.println(res);
+        String s1="";
+        String s2="abad";
+        String s3="abad";
+        
+        interleavingString(s1, s2, s3);
     }
     
 }
