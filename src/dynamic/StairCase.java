@@ -1,4 +1,7 @@
 package dynamic;
+
+import java.util.Stack;
+
 public class StairCase {
 
 	
@@ -17,11 +20,51 @@ public class StairCase {
 			System.out.println(output[i]);
 		}
 	}
+	//find if the last stair is possible to reach or not
+	public static void stairCase1(int nums[]){
+		int n=nums.length;
+		boolean dp[]=new boolean[n+1];
+		dp[0]=true;
+		for(int i=0;i<n;i++){
+			if(nums[i]>0 && dp[i]){
+			for(int j=i+1;j<=i+nums[i] && j<n;j++){
+				dp[j]=true;
+			}}
+		}
+		System.out.println(dp[n-1]);
+	}
 	
-	
+	public static void jumpGame3(int nums[],int start){
+		Stack<Integer> st=new Stack<Integer>();
+		boolean flag=false;
+		int n=nums.length;
+		boolean visited[]=new boolean[n];
+		if(start>=0 && start<n){
+			st.add(start);
+			visited[start]=true;
+		}
+		while(!st.isEmpty()){
+			int top=st.pop();
+			if(nums[top]==0){
+				flag=true;
+				break;
+			}
+			int left=top-nums[top];
+			int right=top+nums[top];
+			if(left>=0 && left<n && !visited[left]){
+				visited[left]=true;
+				st.add(left);
+			}
+			if(right>=0 && right<n && !visited[right]){
+				visited[right]=true;
+				st.add(right);
+			}
+		}
+		System.out.println(flag);
+	}
 	
 	public static void main(String args[]) throws Exception{
-		int arr[]= {5,5,2,4,1,5,9,8,6,3,8,9,1};
-		stairCase(arr);
+		int arr[]= {3,0,2,1,2};
+		jumpGame3(arr,2);
 	}
 }

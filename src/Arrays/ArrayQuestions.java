@@ -566,11 +566,72 @@ public class ArrayQuestions extends Throwable{
 			}
 		}
 	}
+
+	//check for the validation of suduko
+	public static void suduko(String arr[][]){
+		boolean flag=true;
+		for(int i=0;i<9;i++){
+			for(int j=0;j<9;j++){
+				String c=arr[i][j];
+				if(Character.isDigit(c.charAt(0))){
+					for(int k=0;k<9;k++){
+						if(arr[i][k]==c && k!=j){
+							flag=false;
+							System.out.println("same row found for "+c+" at "+i+" "+k);
+							break;
+						}
+						if(arr[k][j]==c && k!=i){
+							System.out.println("same column found for "+c+" at "+i+" "+k);
+							flag=false;
+							break;
+						}
+					}
+					for(int m=i;m<i+3 && m<9;m++){
+						for(int n=j;n<j+3 && n<9;n++){
+							if(arr[m][n]==c && m!=i && n!=j){
+								System.out.println("same row  and column found for "+c+" at "+m+" "+n);
+								flag=false;
+								break;
+							}
+						}
+					}
+				}
+			}
+		}
+		System.out.println(flag?"corrected":"inccoreect");
+	}
+
+	//count and say question
+	public static String countandsay(int n){
+		if(n==1){
+			return "1";
+		}
+		if(n==2){
+			return "11";
+		}
+		else{
+			String str=countandsay(n-1)+"&";
+			int len=str.length();
+			int count=0;
+			String newstr="";
+			for(int i=0;i<len-1;i++){
+				if(str.charAt(i)!=str.charAt(i+1)){
+					System.out.println(count+1);
+					String co=Integer.toString(count+1);
+					newstr+=(co+str.charAt(i));
+					count=0;
+				}
+				else{
+					count++;
+				}
+			}
+			System.out.println(newstr+" for "+n);
+			return newstr;
+		}
+	}
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
-		int arr[]={3,3,3,3,5,5,5,2,2,7};
-		int n=arr.length;
-		mobileString("234");
+		System.out.println(countandsay(6));
 	}
 
 
