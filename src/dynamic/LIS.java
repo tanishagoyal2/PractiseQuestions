@@ -1,8 +1,12 @@
 package dynamic;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.PriorityQueue;
+import java.util.concurrent.PriorityBlockingQueue;
 
 public class LIS {
     //Given N elements, write a program that prints the length of the longest increasing subsequence whose adjacent element difference is one. 
@@ -51,10 +55,50 @@ public class LIS {
                 max = lis[i];
         System.out.println(max);
     }
+    //leetcode LIS wiggle subsequence [1, 7, 4, 9, 2, 5] is a wiggle sequence because the differences (6, -3, 5, -7, 3)
+    public static void wiggleMaxLength(int []nums){
+        int k=1;
+        int len=nums.length;
+        int []Lis=new int[len];
+        Lis[0]=nums[0];
+        for(int i=1;i<len;i++){
+            if(k%2!=0 ){
+                if(Lis[k-1]<nums[i]){
+                    Lis[k++]=nums[i];
+                }
+                else{
+                    Lis[k-1]=nums[i];
+                }
+            }
+            else{
+                if(Lis[k-1]>nums[i]){
+                    Lis[k++]=nums[i];
+                }
+                else{
+                    Lis[k-1]=nums[i];
+                }
+            }
+        }
+        System.out.println(k);
+    }
+    //leetcode queue reconstruction by height
+    public static void reconstructQueue(int [][]people){
+        PriorityQueue<int []> pq=new PriorityQueue<>((a,b)->a[0]==b[0]?a[1]-b[1]:b[0]-a[0]);
+        for(int i=0;i<people.length;i++){
+            pq.add(people[i]);
+        }
+        List<int[]> result=new ArrayList<int[]>();
+        while(!pq.isEmpty()){
+            int[] e=pq.poll();
+            result.add(e[1],e);
+            System.out.println(e[0]+"  "+e[1]);
+        }
+        System.out.println(result.toArray(new int[people.length][2] ));
+    }
     public static void main(String args[]){
         int n=9;
-        int arr[]={10, 22, 9, 33, 21, 50, 41, 60, 80} ;
-        LIS2(arr, n);
+        int arr[][]={{7,0},{4,4},{7,1},{5,0},{6,1},{5,2}};
+        reconstructQueue(arr);
     }
 }
 

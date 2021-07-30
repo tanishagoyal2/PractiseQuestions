@@ -551,7 +551,98 @@ public class ArrayQuestions extends Throwable{
 		System.out.println(li);
 	}
 
-	public static void recusive(List<String> li,StringBuilder str,String digits,HashMap<Integer,String> hm,int k){
+	public static void factors(int arr[]){
+		int n=arr.length;
+		int result[]=new int[n];
+		for(int i=0;i<n;i++){
+			for(int j=i+1;j<n;j++){
+				if(arr[i]%arr[j]==0 || arr[j]%arr[i]==0){
+					result[i]+=1;
+					result[j]+=1;
+				}
+			}
+		}
+		System.out.println(result);
+	}
+	static List<Integer> query_game(int N, int[] A, int Q, int[][] P){
+		// Write your code here
+		 List<Integer> li=new ArrayList<Integer>();
+		 HashMap<Integer,Integer> hm=new HashMap<Integer,Integer>();
+		 boolean flag=false;
+		 for(int i=0;i<N;i++){
+			 hm.put(A[i],i);
+		 }
+		 for(int i=0;i<Q;i++){
+			 if(P[i][0]==1){
+				 flag =!flag;
+				 //for(int j=0;j<N/2;j++){
+					// int temp=A[j];
+					 //hm.put(A[j],N-j-1);
+					 //A[j]=A[N-j-1];
+					 //hm.put(A[N-j-1],j);
+					 //A[N-j-1]=temp;
+				 //}
+			 }
+			 else if(P[i][0]==2){
+				 int ind=flag?A[N-P[i][1]]:A[P[i][1]-1];
+				 if(flag){
+					hm.put(ind,N-P[i][2]);
+					A[N-P[i][1]]=A[N-P[i][2]];
+					hm.put(A[N-P[i][2]],N-P[i][1]);
+					A[N-P[i][2]]=ind;
+				 }
+				 else {
+					hm.put(ind,P[i][2]-1);
+					A[P[i][1]-1]=A[P[i][2]-1];
+					hm.put(A[P[i][2]-1],P[i][1]-1);
+					A[P[i][2]-1]=ind;
+				 }
+			 }
+			 else if(P[i][0]==3){
+				 //for(int k=0;k<=N/2;k++){
+				   //  if(A[k]==P[i][1]){
+					 //    li.add(k+1);
+					   //  break;
+					 //}
+					 //else if(A[N-k-1]==P[i][1]){
+					   //  li.add(N-k);
+						 //break;
+					 //}
+				 //}
+				if(flag)
+				li.add(N-hm.get(P[i][1]));
+				else{
+					li.add(hm.get(P[i][1])+1);
+				}
+			 }
+		 }
+		 System.out.println(li);
+		 return li;
+	 
+	 }
+	 public static void maximumPairs(int n,int nums[]){
+		 Arrays.sort(nums);
+		 int score=0;
+		 for(int i=0;i<n-1;i=i+2){
+			 System.out.println(nums[i]|nums[i+1]);
+			score+=setBitNumber(nums[i]|nums[i+1]);
+		 }
+		 System.out.println(score);
+	 }
+	 static int setBitNumber(int n)
+    {
+        if (n == 0)
+            return 0;
+ 
+        int msb = 0;
+        while (n%2==0 && n>0) {
+            n = n / 2;
+            msb++;
+        }
+		System.out.println("for "+n+" "+(1<<msb));
+        return (1 << msb);
+    }
+	 public static void recusive(List<String> li,StringBuilder str,String digits,HashMap<Integer,String> hm,int k){
 		if(str.length()==digits.length()){
 			li.add(str.toString());
 			return;
@@ -602,6 +693,38 @@ public class ArrayQuestions extends Throwable{
 	}
 
 	//count and say question
+
+	static List<Integer> query_game1(int N, int[] A, int Q, int[][] P){
+		// Write your code here
+		 List<Integer> li=new ArrayList<Integer>();
+		 HashMap<Integer,Integer> hm=new HashMap<Integer,Integer>();
+		 for(int i=0;i<N;i++){
+			 hm.put(A[i],i);
+		 }
+		 for(int i=0;i<Q;i++){
+			 if(P[i][0]==1){
+				 for(int j=0;j<N/2;j++){
+					 int temp=A[j];
+					 hm.put(A[j],N-j-1);
+					 A[j]=A[N-j-1];
+					 hm.put(A[N-j-1],j);
+					 A[N-j-1]=temp;
+				 }
+			 }
+			 else if(P[i][0]==2){
+				 int ind=A[P[i][1]-1];
+				 hm.put(ind,P[i][2]-1);
+				 A[P[i][1]-1]=A[P[i][2]-1];
+				 hm.put(A[P[i][2]-1],P[i][1]-1);
+				 A[P[i][2]-1]=ind;
+			 }
+			 else if(P[i][0]==3){
+				 li.add(hm.get(P[i][1])+1);
+			 }
+		 }
+		 return li;
+	 
+	 }
 	public static String countandsay(int n){
 		if(n==1){
 			return "1";
@@ -631,7 +754,12 @@ public class ArrayQuestions extends Throwable{
 	}
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
-		System.out.println(countandsay(6));
+		System.out.println(5|7);
+		int nums[]={9,4,10,4,5,7};
+		//int a[]={1,2,3,4};
+		//int que[][]={{2,2,4},{3,2,0},{1,0,0},{3,1,0}};
+		//query_game(a.length, a, que.length, que);
+		maximumPairs(nums.length, nums);
 	}
 
 

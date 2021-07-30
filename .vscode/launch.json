@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch file",
+            "request": "launch",
+            "mainClass": "mountblue.file",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
+            "name": "Launch leetcode",
+            "request": "launch",
+            "mainClass": "dynamic.leetcode",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
             "name": "Launch uniquePaths",
             "request": "launch",
             "mainClass": "dynamic.uniquePaths",
