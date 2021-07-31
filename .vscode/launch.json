@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch LPS",
+            "request": "launch",
+            "mainClass": "dynamic.LPS",
+            "projectName": "competitive"
+        },
+        {
+            "type": "java",
             "name": "Launch file",
             "request": "launch",
             "mainClass": "mountblue.file",

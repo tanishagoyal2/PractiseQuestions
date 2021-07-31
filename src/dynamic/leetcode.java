@@ -395,14 +395,42 @@ public class leetcode {
             }
             System.out.println(arrows);
         }
+    public static List<Integer> paranthesisEvaluation(String s){
+        List<Integer> li=new ArrayList<Integer>();
+        int n=s.length();
+        for(int i=0;i<n;i++){
+            if(s.charAt(i)=='*'|| s.charAt(i)=='-'|| s.charAt(i)=='+'){
+                System.out.println(s.charAt(i));
+                String leftExpression=s.substring(0, i);
+                String rightExpression=s.substring(i+1, n);
+                List<Integer> leftans=paranthesisEvaluation(leftExpression);
+                List<Integer> rightans=paranthesisEvaluation(rightExpression);
+                System.out.println(leftans);
+                for(int left:leftans){
+                    for(int right:rightans){
+                        System.out.println(s.charAt(i));
+                        if(s.charAt(i)=='*'){
+                            li.add(left*right);
+                        }
+                        else if(s.charAt(i)=='+'){
+                            li.add(left+right);
+                        }
+                        else {
+                            li.add(left-right);
+                        }
+                    }
+                }
+            }         
+        }
+        if(li.size()==0){
+            li.add(Integer.parseInt(s));
+        }
+        return li;
+    }
     public static void main(String args[]){
-        System.out.println( "Hello" + args[0] ); 
+        System.out.println(paranthesisEvaluation("2*3-4*5"));
     }
 }
-enum em{
-    A,B,C;
-}
-
 class element{
     int first;
     int second;
